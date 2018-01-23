@@ -47,7 +47,7 @@ var recipesApp = function () {
       method: "GET",
       url: 'popular',
       success: function (data) {
-        console.log(data);
+        savedRecipes = data;
         _renderPopular();
 
       }, error: function (jqXHR, textStatus, errorThrown) {
@@ -72,7 +72,7 @@ var recipesApp = function () {
     $(".popular-recipes").empty();
     var source = $('#popular-template').html();
     var template = Handlebars.compile(source);
-    var poopularData = { "popularArray": savedRecipes };
+    var popularData = { "popularArray": savedRecipes };
     var newHTML = template(popularData);
     $('.popular-recipes').append(newHTML);
 

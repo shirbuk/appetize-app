@@ -66,6 +66,7 @@
                             <a href="{{url}}" target="_blank">{{title}}</a>
                         </li>
                     </ul>
+                    <hr>
             </div>
      </div>
         {{/each}} 
@@ -73,11 +74,11 @@
 
     <script id="popular-template" type="text/x-handlebars-template">
 
-        {{#each}}
+        {{#each popularArray}}
         <div class="popular-container col-md-3 float-left">
 
             <div>
-                <ul>
+                <ul class="pop">
                     <li>
                         <img src="{{imageUrl}}"><br>
                         <a href="{{url}}">{{title}}</a>
