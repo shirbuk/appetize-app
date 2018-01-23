@@ -1,45 +1,45 @@
-// search for recipes form:
-var $recipeList = $(".recipe-list");
+var $recipeList = $(".recipe-list"); // search for recipes form
 
 var recipesApp = function () {
-  var recipes = [];
-  var savedRecipes = [];
+    var recipes = [];
+    var savedRecipes = [];
+  
+    function findRecipe(text) {
+        var url = 'recipes?recipe=' + text;
+        $.ajax({
+            method: "GET",
+            url: url,
+            success: function (data) {
+                if (data.length) {
+                    console.log(data);
+                    recipes = data;
+                    _renderPage();
+                } else (
+                    alert("Sorry we dont have a recipe match")
+                )
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(textStatus);
+            }
+        });
+    }
 
-  function findRecipe(text) {
-    var url = 'recipes?recipe=' + text;
-    $.ajax({
-      method: "GET",
-      url: url,
-      success: function (data) {
-        if (data.length) {
-          console.log(data);
-          recipes = data;
-          _renderPage();
-        } else (
-          alert("Sorry we dont have a recipe match")
-        )
-      },
-      error: function (jqXHR, textStatus, errorThrown) {
-        console.log(textStatus);
-      }
-    });
-  }
+    function likeRecipe(index) {
+        var recipe = recipes[index];
+        $.ajax({
+            method: "POST",
+            url: 'recipes',
+            data: recipe,
+            success: function (data) {
+                savedRecipes.push(data);
+                console.log(savedRecipes);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(textStatus);
+            }
+        });
+    }
 
-  function likeRecipe(index) {
-    var recipe = recipes[index];
-    $.ajax({
-      method: "POST",
-      url: 'recipes',
-      data: recipe,
-      success: function (data) {
-        savedRecipes.push(data);
-        console.log(savedRecipes);
-      },
-      error: function (jqXHR, textStatus, errorThrown) {
-        console.log(textStatus);
-      }
-    });
-  }
 
   function popularRecipes() {
 
@@ -56,22 +56,7 @@ var recipesApp = function () {
     });
     };
 
-  // function _renderPage() {
-  //   $recipeList.empty();
-  //   var source = $('#recipe-template').html();
-  //   var template = Handlebars.compile(source);
-  //   for (var i = 0; i < recipes.length; i++) {
-  //     var newHTML = template(recipes[i]);
-  //     console.log(newHTML);
-  //     $recipeList.append(newHTML);
-  //   }
-  // }
-
-
-  // 5.	Add renderPage() function in main.js. It goes through the recipes array and puts them on the screen,
-  //  using the handlebars template.
-
-
+    // goes through the recipes array and puts them on the screen, using the handlebars template
   function _renderPage() {
         $recipeList.empty();
         var source = $('#recipe-template').html();
@@ -100,6 +85,8 @@ var recipesApp = function () {
       popularRecipes: popularRecipes
     };
   };
+
+  
 
   var app = recipesApp();
 
