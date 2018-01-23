@@ -1,9 +1,9 @@
+// search for recipes form:
+var $recipeList = $(".recipe-list");
+
 var recipesApp = function () {
   var recipes = [];
   var savedRecipes = [];
-
-  // search for recipes form:
-  var $recipeList = $(".recipe-list");
 
   function findRecipe(text) {
     var url = 'recipes?recipe=' + text;
