@@ -12,7 +12,7 @@ var recipesApp = function () {
       success: function (data) {
         console.log(data);
         recipes = data;
-        // _renderPage();
+        _renderPage();
         //if array comes back empty, display 'sorry we dont have a recipe match!""
       },
       error: function (jqXHR, textStatus, errorThrown) {
@@ -30,6 +30,22 @@ var recipesApp = function () {
   //     $recipeList.append(newHTML);
   //   }
   // }
+
+
+  // 5.	Add renderPage() function in main.js. It goes through the recipes array and puts them on the screen,
+  //  using the handlebars template.
+
+  function _renderPage () {
+    $recipeList.empty();
+    var source = $('#recipe-template').html();
+    var template = Handlebars.compile(source);
+    var recipeData = { "recipeArray": recipes };
+    var newHTML = template(recipeData);
+    $('.recipe-list').append(newHTML);
+
+  }
+
+
 
   // function addRecipe(newRecipe) {
   //   $.ajax({
