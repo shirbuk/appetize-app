@@ -12,11 +12,11 @@ var recipesApp = function () {
       url: url,
       success: function (data) {
         if (data.length) {
-        console.log(data);
-        recipes = data;
-        _renderPage();
+          console.log(data);
+          recipes = data;
+          _renderPage();
         } else (
-          alert ("Sorry we dont have a recipe match")
+          alert("Sorry we dont have a recipe match")
         )
       },
       error: function (jqXHR, textStatus, errorThrown) {
@@ -41,6 +41,21 @@ var recipesApp = function () {
     });
   }
 
+  function popularRecipes() {
+
+    $.ajax({
+      method: "GET",
+      url: 'popular',
+      success: function (data) {
+        console.log(data);
+        _renderPopular();
+
+      }, error: function (jqXHR, textStatus, errorThrown) {
+        console.log(textStatus);
+      }
+    });
+    };
+
   // function _renderPage() {
   //   $recipeList.empty();
   //   var source = $('#recipe-template').html();
@@ -56,54 +71,59 @@ var recipesApp = function () {
   // 5.	Add renderPage() function in main.js. It goes through the recipes array and puts them on the screen,
   //  using the handlebars template.
 
-  function _renderPage () {
-    $recipeList.empty();
-    var source = $('#recipe-template').html();
+
+  function _renderPage() {
+        $recipeList.empty();
+        var source = $('#recipe-template').html();
+        var template = Handlebars.compile(source);
+        var recipeData = { "recipeArray": recipes };
+        var newHTML = template(recipeData);
+        $('.recipe-list').append(newHTML);
+
+      }
+
+  function _renderPopular(){
+
+    $(".popular-recipes").empty();
+    var source = $('#popular-template').html();
     var template = Handlebars.compile(source);
-    var recipeData = { "recipeArray": recipes };
-    var newHTML = template(recipeData);
-    $('.recipe-list').append(newHTML);
+    var poopularData = { "popularArray": savedRecipes };
+    var newHTML = template(popularData);
+    $('.popular-recipes').append(newHTML);
 
-  }
+  }    
 
-
-
-  // function addRecipe(newRecipe) {
-  //   $.ajax({
-  //     type: "POST",
-  //     dataType: "json",
-  //     // url: '', // from server
-  //     data: {
-  //       text: newRecipe,
-  //     },
-  //     success: function (data) {
-  //       recipes.push(data);
-  //       _renderPage();
-  //     }
-  //   });
-  // }
 
   return {
-    findRecipe: findRecipe,
-    likeRecipe: likeRecipe
-  }
-}
+      findRecipe: findRecipe,
+      likeRecipe: likeRecipe,
+      popularRecipes: popularRecipes
+    };
+  };
 
-var app = recipesApp();
+  var app = recipesApp();
 
-// click button "get recipes": 
-$(".main-btn").on('click', function () {
-  var $input = $(".main-input");
-  if ($input.val() === "") {
-    alert("Please enter text");
-  }
-  else {
-    app.findRecipe($input.val());
-    $input.val("");
-  }
-})
+  // click button "get recipes": 
+  $(".main-btn").on('click', function () {
+    var $input = $(".main-input");
+    if ($input.val() === "") {
+      alert("Please enter text");
+    }
+    else {
+      app.findRecipe($input.val());
+      $input.val("");
+    }
+  })
 
-$recipeList.on('click', '.like-button', function () {
-  var index = $(this).closest('.recipe-container').index();
-  app.likeRecipe(index);
-});
+  $recipeList.on('click', '.like-button', function () {
+    var index = $(this).closest('.recipe-container').index();
+    app.likeRecipe(index);
+  });
+
+  //click for popular recipes
+
+  $(".find-popular").on('click', function () {
+
+    app.popularRecipes();
+
+  });
