@@ -36,27 +36,62 @@
         <section id="recipes">
             <div class="recipe-list">
 
+
             </div>
+            <a class="btn btn-primary find-popular" href="#popular">popular recipes</a>
         </section>
     </div>
-    </div>
+
+    <div class="row">
+           <section id="popular">
+               <div class="popular-recipes"></div>
+
+           </section>
+
+
+</div>
+
+</div>
+
     <script id="recipe-template" type="text/x-handlebars-template">
         {{#each recipeArray}}
     <div class="recipe-container col-md-3 float-left">
             <div>
                     <ul class="list">
+                        <li>
                             <img src="{{imageUrl}}"><button id="submitButton" class="like-button float-right">
                                     <i class="fa fa-thumbs-o-up"></i>
                                   </button>
                             <br>
                             <a href="{{url}}" target="_blank">{{title}}</a>
+                        </li>
                     </ul>
             </div>
      </div>
         {{/each}} 
     </script>
 
+    <script id="popular-template" type="text/x-handlebars-template">
 
+        {{#each}}
+        <div class="popular-container col-md-3 float-left">
+
+            <div>
+                <ul>
+                    <li>
+                        <img src="{{imageUrl}}"><br>
+                        <a href="{{url}}">{{title}}</a>
+
+                    </li>
+
+
+                </ul>
+
+
+            </div>
+        </div>
+        {{/each}}
+    </script>
 
     <script src="jquery/dist/jquery.js"></script>
     <script src="handlebars/dist/handlebars.js"></script>

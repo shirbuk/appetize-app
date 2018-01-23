@@ -3,7 +3,7 @@ var $recipeList = $(".recipe-list"); // search for recipes form
 var recipesApp = function () {
     var recipes = [];
     var savedRecipes = [];
-
+  
     function findRecipe(text) {
         var url = 'recipes?recipe=' + text;
         $.ajax({
@@ -40,8 +40,24 @@ var recipesApp = function () {
         });
     }
 
+
+  function popularRecipes() {
+
+    $.ajax({
+      method: "GET",
+      url: 'popular',
+      success: function (data) {
+        console.log(data);
+        _renderPopular();
+
+      }, error: function (jqXHR, textStatus, errorThrown) {
+        console.log(textStatus);
+      }
+    });
+    };
+
     // goes through the recipes array and puts them on the screen, using the handlebars template
-    function _renderPage() {
+  function _renderPage() {
         $recipeList.empty();
         var source = $('#recipe-template').html();
         var template = Handlebars.compile(source);
@@ -49,29 +65,52 @@ var recipesApp = function () {
         var newHTML = template(recipeData);
         $('.recipe-list').append(newHTML);
 
-    }
+      }
 
-    return {
-        findRecipe: findRecipe,
-        likeRecipe: likeRecipe
-    }
-}
+  function _renderPopular(){
 
-var app = recipesApp();
+    $(".popular-recipes").empty();
+    var source = $('#popular-template').html();
+    var template = Handlebars.compile(source);
+    var poopularData = { "popularArray": savedRecipes };
+    var newHTML = template(popularData);
+    $('.popular-recipes').append(newHTML);
 
-// click button "get recipes": 
-$(".main-btn").on('click', function () {
+  }    
+
+
+  return {
+      findRecipe: findRecipe,
+      likeRecipe: likeRecipe,
+      popularRecipes: popularRecipes
+    };
+  };
+
+  
+
+  var app = recipesApp();
+
+  // click button "get recipes": 
+  $(".main-btn").on('click', function () {
     var $input = $(".main-input");
     if ($input.val() === "") {
-        alert("Please enter text");
+      alert("Please enter text");
     }
     else {
-        app.findRecipe($input.val());
-        $input.val("");
+      app.findRecipe($input.val());
+      $input.val("");
     }
-})
+  })
 
-$recipeList.on('click', '.like-button', function () {
+  $recipeList.on('click', '.like-button', function () {
     var index = $(this).closest('.recipe-container').index();
     app.likeRecipe(index);
-});
+  });
+
+  //click for popular recipes
+
+  $(".find-popular").on('click', function () {
+
+    app.popularRecipes();
+
+  });
