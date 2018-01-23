@@ -135,9 +135,8 @@ h2 {
     margin-top: 25px;
 
 }
- .list {
-     list-style-type: none;
- }
+
+ 
  .list a {
     margin: auto;
  }
@@ -159,6 +158,7 @@ ul, li {
     opacity: 1;
     -webkit-transition: .3s ease-in-out;
     transition: .3s ease-in-out;
+    width: 100%;
 
 }
 
@@ -173,6 +173,7 @@ border-radius: 5px;
 opacity: 1;
 -webkit-transition: .3s ease-in-out;
 transition: .3s ease-in-out;
+width: 100%;
 
 }
 
