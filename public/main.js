@@ -30,6 +30,7 @@ var recipesApp = function () {
       data: recipe,
       success: function (data) {
         savedRecipes.push(data);
+        console.log(savedRecipes);
       },
       error: function (jqXHR, textStatus, errorThrown) {
         console.log(textStatus);
