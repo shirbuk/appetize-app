@@ -7,8 +7,8 @@ header {
     background-image: url("new-image-hack.jpg");
     background-size: cover;
     background-repeat: no-repeat;
-    background-attachment: scroll;
-    height: 800px;
+  
+    height: 800px;;
     
   /* -webkit-filter: blur(2px);
   -moz-filter: blur(2px);
@@ -50,15 +50,15 @@ h2 {
     opacity: 0.75;
 
 }
-#recipes{
-    background-color: #e1cca1;
+#recipe-template {
+    background-color: #c5b595;
    
     width: 100%;
 }
 
-#popular {
+.popular-row {
 
-    background-color: #8d7f63;
+    background-color: #c5b595;
 }
 
 .recipe-list {
@@ -77,10 +77,17 @@ h2 {
     font-family: FontAwesome;
   }
 
-.pop {
+ul, li {
     list-style-type: none;
+    margin-left: 0;
+    padding-left: 0;
+ 
 }
 
+.pop img {
+border: 1px solid black;
+
+}
 .popular-recipes {
     text-align: center;
 }
@@ -89,6 +96,7 @@ a {
     font-weight: bold;
     text-decoration: none;
     color: rgb(39, 35, 35);
+  
 }
 
 .find-popular {
