@@ -1,11 +1,11 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var request = require('request');
 
 // mongoose.connect(process.env.CONNECTION_STRING || 'mongodb://localhost/spacebookDB');
 
 // var Post = require('./models/postModel');
-
 
 var app = express();
 app.use(express.static('public'));
@@ -14,14 +14,27 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 
+app.get('/recipes', function(req, res) {
+    var url = `https://api.edamam.com/search?q=${req.query.recipe}&app_id=a41229b4&app_key=
+                e271a0d52d0ae4abe4ecd96af53df16a&from=0&to=6`;
+    request(url, function (error, response, body) {
+        if (error) { return console.error(error); }
+        if (response.statusCode == 200) {
+            var recipes = JSON.parse(body);
+            if (recipes.hits.length) {
+                recipes = recipes.hits.map(function(element) {
+                return { url: element.recipe.url, title: element.recipe.label, imageUrl: element.recipe.image, 
+                        healthLabels: element.recipe.healthLabels };
+                });
+                res.send(recipes);
+            } else {
+                res.send([]);
+            }
+        }
+    });
+});
 
 
-app.get('/', function(req, res){
-    res.send('hello!');
-})
-
-
-
-app.listen(process.env.PORT || '8000', function(){
+app.listen(process.env.PORT || '8000', function() {
     console.log('you r connected to port 8000!');
 });
