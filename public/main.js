@@ -41,18 +41,6 @@ var recipesApp = function () {
     });
   }
 
-  // function _renderPage() {
-  //   $recipeList.empty();
-  //   var source = $('#recipe-template').html();
-  //   var template = Handlebars.compile(source);
-  //   for (var i = 0; i < recipes.length; i++) {
-  //     var newHTML = template(recipes[i]);
-  //     console.log(newHTML);
-  //     $recipeList.append(newHTML);
-  //   }
-  // }
-
-
   // 5.	Add renderPage() function in main.js. It goes through the recipes array and puts them on the screen,
   //  using the handlebars template.
 
@@ -85,8 +73,23 @@ var recipesApp = function () {
 
   return {
     findRecipe: findRecipe,
-    likeRecipe: likeRecipe
+    likeRecipe: likeRecipe,
+    // deletePopularRecipe: deletePopularRecipe
   }
+}
+
+var deletePopularRecipe = function(index) {
+  $.ajax ({
+    type: 'DELETE',
+    url: '/recipes' + recipes[index]._id,
+    success: function (data) {
+      savedRecipes.splice(index, 1);
+      renderPage();
+    },
+    error: function (jqXHR, textStatus, errorThrown) {
+      console.log(textStatus);
+  }
+  })
 }
 
 var app = recipesApp();
@@ -107,3 +110,9 @@ $recipeList.on('click', '.like-button', function () {
   var index = $(this).closest('.recipe-container').index();
   app.likeRecipe(index);
 });
+
+
+$recipeList.on('click', '.remove-recipe', function() {
+  var index = $(this).closest('.reacipe-containter').index();
+  app.deletePopularRecipe(index);
+})
