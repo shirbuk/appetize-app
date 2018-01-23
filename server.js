@@ -5,7 +5,7 @@ var request = require('request');
 
 // mongoose.connect(process.env.CONNECTION_STRING || 'mongodb://localhost/spacebookDB');
 
-// var Post = require('./models/postModel');
+var Recipe = require('./models/postModel');
 
 var app = express();
 app.use(express.static('public'));
@@ -33,6 +33,14 @@ app.get('/recipes', function(req, res) {
         }
     });
 });
+
+app.post('/recipes', function (req, res) {
+    var newRecipe = new Recipe(req.body);
+    newRecipe.save(function (err, data) {
+      if (err) throw err;
+      res.send(data);
+    })
+  })
 
 
 app.listen(process.env.PORT || '8000', function() {
