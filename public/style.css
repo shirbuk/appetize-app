@@ -54,11 +54,6 @@ h1 {
     margin-top: 25px;
 
 }
- /* .img-thumbnail a{
-
-     text-align: center;
- } */
-
  .list {
      list-style-type: none;
  }
@@ -69,3 +64,7 @@ h1 {
  #submitButton {
     font-family: FontAwesome;
   }
+
+.pop {
+    list-style-type: none;
+}
