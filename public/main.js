@@ -66,6 +66,8 @@ var recipesApp = function () {
         $('.recipe-list').append(newHTML);
 
       }
+    });
+  }
 
   function _renderPopular(){
 
@@ -80,6 +82,52 @@ var recipesApp = function () {
 
 
   return {
+
+    findRecipe: findRecipe,
+    likeRecipe: likeRecipe,
+    // deletePopularRecipe: deletePopularRecipe
+  }
+}
+
+var deletePopularRecipe = function(index) {
+  $.ajax ({
+    type: 'DELETE',
+    url: '/recipes' + recipes[index]._id,
+    success: function (data) {
+      savedRecipes.splice(index, 1);
+      renderPage();
+    },
+    error: function (jqXHR, textStatus, errorThrown) {
+      console.log(textStatus);
+  }
+  })
+}
+
+var app = recipesApp();
+
+// click button "get recipes": 
+$(".main-btn").on('click', function () {
+  var $input = $(".main-input");
+  if ($input.val() === "") {
+    alert("Please enter text");
+  }
+  else {
+    app.findRecipe($input.val());
+    $input.val("");
+  }
+})
+
+$recipeList.on('click', '.like-button', function () {
+  var index = $(this).closest('.recipe-container').index();
+  app.likeRecipe(index);
+});
+
+
+$recipeList.on('click', '.remove-recipe', function() {
+  var index = $(this).closest('.reacipe-containter').index();
+  app.deletePopularRecipe(index);
+})
+
       findRecipe: findRecipe,
       likeRecipe: likeRecipe,
       popularRecipes: popularRecipes
