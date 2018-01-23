@@ -5,7 +5,7 @@ var request = require('request');
 
 // mongoose.connect(process.env.CONNECTION_STRING || 'mongodb://localhost/spacebookDB');
 
-var Recipe = require('./models/postModel');
+var Recipe = require('./models/recipeModel');
 
 var app = express();
 app.use(express.static('public'));
