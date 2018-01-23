@@ -3,7 +3,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var request = require('request');
 
-// mongoose.connect(process.env.CONNECTION_STRING || 'mongodb://localhost/spacebookDB');
+mongoose.connect(process.env.CONNECTION_STRING || 'mongodb://localhost/appetizeDB');
 
 var Recipe = require('./models/recipeModel');
 
@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('/recipes', function(req, res) {
     var url = `https://api.edamam.com/search?q=${req.query.recipe}&app_id=a41229b4&app_key=
-                e271a0d52d0ae4abe4ecd96af53df16a&from=0&to=6`;
+                e271a0d52d0ae4abe4ecd96af53df16a&from=0&to=8`;
     request(url, function (error, response, body) {
         if (error) { return console.error(error); }
         if (response.statusCode == 200) {
