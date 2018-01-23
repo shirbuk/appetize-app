@@ -1,7 +1,8 @@
 var recipesApp = function () {
   var recipes = [];
+  var savedRecipes = [];
 
-  // searh for recipes form:
+  // search for recipes form:
   var $recipeList = $(".recipe-list");
 
   function findRecipe(text) {
@@ -20,6 +21,22 @@ var recipesApp = function () {
       }
     });
   }
+
+  function likeRecipe(index) {
+    var recipe = recipes[index];
+    $.ajax({
+      method: "POST",
+      url: 'recipes',
+      data: recipe,
+      success: function (data) {
+        savedRecipes.push(data);
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+        console.log(textStatus);
+      }
+    });
+  }
+
   // function _renderPage() {
   //   $recipeList.empty();
   //   var source = $('#recipe-template').html();
@@ -63,11 +80,9 @@ var recipesApp = function () {
   // }
 
   return {
-    findRecipe: findRecipe
-    // addRecipe: addRecipe
-
+    findRecipe: findRecipe,
+    likeRecipe: likeRecipe
   }
-
 }
 
 var app = recipesApp();
@@ -84,3 +99,7 @@ $(".main-btn").on('click', function () {
   }
 })
 
+$recipeList.on('click', '.like-button', function () {
+  var index = $(this).closest('.recipe-container').index();
+  app.likeRecipe(index);
+});
