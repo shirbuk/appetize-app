@@ -57,7 +57,7 @@ var app = recipesApp();
 
 // click button "get recipes": 
 $(".main-btn").on('click', function () {
-  var $input = $(".mainInput");
+  var $input = $(".main-input");
   if ($input.val() === "") {
     alert("Please enter text");
   }
