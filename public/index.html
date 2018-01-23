@@ -42,11 +42,14 @@
     </div>
     <script id="recipe-template" type="text/x-handlebars-template">
         {{#each recipeArray}}
-    <div class="col-lg-3 float-left">
+    <div class="col-md-3 float-left">
             <div class="recipe-container">
                     <ul class="list">
-                            <img src="{{imageUrl}}"><br>
-                            <a href="{{url}}" target="_blank">{{title}}</a><button class="like-button">like</button>
+                            <img src="{{imageUrl}}"><button id="submitButton" class="like-button float-right">
+                                    <i class="fa fa-thumbs-o-up"></i>
+                                  </button>
+                            <br>
+                            <a href="{{url}}" target="_blank">{{title}}</a>
                     </ul>
             </div>
      </div>
