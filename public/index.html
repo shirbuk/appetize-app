@@ -24,7 +24,8 @@
                             <h1>Appetize</h1>
                             <input type="text" placeholder="find recipes" class="main-input">
                             <br>
-                            <a class="btn btn-primary main-btn" href="#recipes">get recipes</a>
+                            <a class="btn btn-primary main-btn" href="#recipes">get recipes</a><br>
+                            <a class="btn btn-primary find-popular" href="#popular">popular recipes</a>
                         </div>
                     </div>
                 </div>
@@ -35,16 +36,19 @@
     <div class="row">
         <section id="recipes">
             <div class="recipe-list">
+                
 
 
             </div>
-            <a class="btn btn-primary find-popular" href="#popular">popular recipes</a>
+           
         </section>
     </div>
 
     <div class="row">
            <section id="popular">
-               <div class="popular-recipes"></div>
+               <div class="popular-recipes">
+                    
+               </div>
 
            </section>
 
@@ -54,26 +58,31 @@
 </div>
 
     <script id="recipe-template" type="text/x-handlebars-template">
+        <h2>Enjoy one of these delicious recipes</h2>
+        <hr>
+        <div class="recipe-wrapper">  
         {{#each recipeArray}}
     <div class="recipe-container col-md-3 float-left">
             <div>
                     <ul class="list">
                         <li>
-                            <img src="{{imageUrl}}"><button id="submitButton" class="like-button float-right">
-                                    <i class="fa fa-thumbs-o-up"></i>
+                            <img src="{{imageUrl}}"><button id="submitButton" class="like-button float-right fa fa-thumbs-o-up">
+                                    <!-- <i class="fa fa-thumbs-o-up"></i> -->
                                   </button>
                             <br>
                             <a href="{{url}}" target="_blank">{{title}}</a>
                         </li>
                     </ul>
-                    <hr>
+                   
             </div>
      </div>
         {{/each}} 
+    </div>  
     </script>
 
     <script id="popular-template" type="text/x-handlebars-template">
-
+        <h2>Popular Recipes</h2>
+        <hr>
         {{#each popularArray}}
         <div class="popular-container col-md-3 float-left">
 
@@ -82,6 +91,7 @@
                     <li>
                         <img src="{{imageUrl}}"><br>
                         <a href="{{url}}">{{title}}</a>
+                        <button class="remove-recipe">remove</button>
 
                     </li>
 
