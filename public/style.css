@@ -5,8 +5,14 @@ header {
     background-repeat: no-repeat;
     background-attachment: scroll;
     height: 800px;
+    
+  /* -webkit-filter: blur(2px);
+  -moz-filter: blur(2px);
+  -o-filter: blur(2px);
+  -ms-filter: blur(2px);
+  filter: blur(2px);
+} */
 }
-
 h1 {
     font: 400 140px/0.8 'Cookie', Helvetica, sans-serif;
     color: #fff;
@@ -19,10 +25,11 @@ h1 {
 }
 
 .main-input {
+
     margin-top: 20px;
     width: 250px;
 }
-.main-input:placeholder{
+.main-input:placeholder {
 
     font-family: 'Cookie', Helvetica, sans-serif;
 }
@@ -35,13 +42,15 @@ h1 {
 }
 #recipes{
 
-    height: 500px;
     width: 100%;
 }
 
 .recipe-list {
-    
-    margin-top: 50px;
-    border: 2px solid black;
-    height: 500px;
+
+    margin-top: 15px;
+
 }
+ /* .img-thumbnail a{
+
+     text-align: center;
+ } */
