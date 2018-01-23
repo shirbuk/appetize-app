@@ -23,6 +23,12 @@ h1 {
     text-shadow: 4px 4px 3px rgba(0,0,0,0.1); 
 }
 
+h2 {
+    font-family: 'Cookie', Helvetica, sans-serif;
+    font-size: 75px;
+    text-align: center;
+}
+
 .main {
 
     padding-top: 500px;
@@ -45,12 +51,18 @@ h1 {
 
 }
 #recipes{
-
+    background-color: #e1cca1;
+   
     width: 100%;
 }
 
-.recipe-list {
+#popular {
 
+    background-color: #8d7f63;
+}
+
+.recipe-list {
+    text-align: center;
     margin-top: 25px;
 
 }
@@ -68,3 +80,22 @@ h1 {
 .pop {
     list-style-type: none;
 }
+
+.popular-recipes {
+    text-align: center;
+}
+
+a {
+    font-weight: bold;
+    text-decoration: none;
+    color: rgb(39, 35, 35);
+}
+
+.find-popular {
+
+    margin-top: 10px;
+}
+/* 
+.fa-thumbs-o-up {
+
+} */
