@@ -56,6 +56,20 @@ var recipesApp = function () {
     });
     };
 
+    // function deletePopularRecipe(index) {
+    //     $.ajax({
+    //         type: 'DELETE',
+    //         url: '/recipes' + recipes[index]._id,
+    //         success: function (data) {
+    //             savedRecipes.splice(index, 1);
+    //             renderPage();
+    //         },
+    //         error: function (jqXHR, textStatus, errorThrown) {
+    //             console.log(textStatus);
+    //         }
+    //     });
+    // }
+
     // goes through the recipes array and puts them on the screen, using the handlebars template
   function _renderPage() {
         $recipeList.empty();
@@ -114,3 +128,8 @@ var recipesApp = function () {
     app.popularRecipes();
 
   });
+
+//   $recipeList.on('click', '.remove-recipe', function () {
+  //     var index = $(this).closest('.recipe-container').index();
+  //     app.deletePopularRecipe(index);
+  // });
