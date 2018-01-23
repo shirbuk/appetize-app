@@ -76,6 +76,7 @@
     <script id="popular-template" type="text/x-handlebars-template">
         <h2>Popular Recipes</h2>
         <hr>
+        <div class="popular-wrapper">
         {{#each popularArray}}
         <div class="popular-container col-md-3 float-left" data-id="{{_id}}">
 
@@ -95,6 +96,7 @@
             </div>
         </div>
         {{/each}}
+        </div>
     </script>
 
     <script src="jquery/dist/jquery.js"></script>
