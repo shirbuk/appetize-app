@@ -45,6 +45,15 @@ app.post('/recipes', function (req, res) {
     });
 });
 
+
+  app.delete('/recipes/:recipeId', function (req, res) {
+    Recipe.findByIdAndRemove(req.params.recipeId, function (err, data) {
+      if (err) throw err;
+      res.send(data);
+    })
+  })
+
+
 // get all saved recipes from DB and send to client
 app.get('/popular', function(req, res) {
     Recipe.find(function (error, result) {
@@ -52,6 +61,7 @@ app.get('/popular', function(req, res) {
         res.send(result);
     });
 });
+
 
 app.listen(process.env.PORT || '8000', function () {
     console.log('you r connected to port 8000!');
