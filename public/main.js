@@ -11,10 +11,13 @@ var recipesApp = function () {
       method: "GET",
       url: url,
       success: function (data) {
+        if (data.length) {
         console.log(data);
         recipes = data;
         _renderPage();
-        //if array comes back empty, display 'sorry we dont have a recipe match!""
+        } else (
+          alert ("Sorry we dont have a recipe match")
+        )
       },
       error: function (jqXHR, textStatus, errorThrown) {
         console.log(textStatus);
