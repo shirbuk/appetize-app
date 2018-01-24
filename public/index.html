@@ -53,17 +53,22 @@
     </header>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-10 offset-md-1">
+            <div class="col-md-10 offset-md-1 back">
                 <section id="recipes">
                     <div class="recipe-list"></div>
                 </section>
             </div>
         </div>
         <div class="row popular-row">
-            <div class="col-md-10 offset-md-1">
+            <div class="col-md-10 offset-md-1 back">
                 <section id="popular">
-                    <div class="popular-recipes"></div>
+                    <div class="popular-recipes">
+
+                           
+                    </div>
+                 
                 </section>
+              
             </div>
         </div>
     </div>
@@ -72,13 +77,13 @@
         <hr>
         <div class="recipe-wrapper">  
         {{#each recipeArray}}
-    <div class="recipe-container col-sm-3 col-xs-6 float-left">
+    <div class="recipe-container col-md-3 float-left">
             <div>
 
                 <ul class="list">
                     <li>
                         <a href="{{url}}" target="_blank"><img src="{{imageUrl}}"></a>    
-                        <div class="title"> {{title}} </div>
+                        <p> {{title}}</p>
                         <i id="submitButton" aria-hidden="true" class="like-button float-right fa fa-thumbs-o-up"></i>
                          <i aria-hidden="true" class="dislike-button float-left fa fa-thumbs-down"></i>
 
@@ -89,7 +94,6 @@
             </div>
 
     </div>
-
 
         {{/each}} 
     </div>  
@@ -105,7 +109,7 @@
                 <ul class="pop">
                     <li>
                         <a href="{{url}}" target="_blank"><img src="{{imageUrl}}"></a>    
-                        {{title}}
+                        <p>{{title}}</p>
                         <i aria-hidden="true" class="like-button float-right fa fa-thumbs-o-up"></i>
                         <i aria-hidden="true" class="dislike-button float-left fa fa-thumbs-down"></i>
                         {{likes}}
@@ -113,9 +117,12 @@
                    </li>
 
                 </ul>
+              
             </div>
         </div>
+     
         {{/each}}
+      
         </div>
     </script>
     <!-- <script type="text/javascript"

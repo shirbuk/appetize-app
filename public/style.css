@@ -1,15 +1,22 @@
 * {
     box-sizing: border-box;
 }
-
+ 
     @media (max-width: 700px) {
-        .col-md-3 {
-          width: 100%;
-        }
-      }
+      
+     .col-md-3 {
+
+        width: 100%; 
+        /* margin-bottom: 40px;
+    */
+     }
+
+
+    } 
+
 
 body {
-    background-color: #e2ebf0;
+    background-color: #F3F3EB;
 }
 
 header {
@@ -17,7 +24,7 @@ header {
     background-image: url("new-image-hack.jpg");
     background-size: cover;
     background-repeat: no-repeat;
-    height: 800px;;
+    height: 800px;
     
 
 }
@@ -38,6 +45,7 @@ h2 {
 
 p {
     font-family: 'Raleway', sans-serif;
+    padding-top: 7px;
 }
 .main {
 
@@ -57,13 +65,13 @@ p {
 
 
 #recipe-template {
-    background-color: #e4efe9; 
+    background-color: #F3F3EB;
     width: 100%;
 }
 
 .popular-row {
 
-    background-color: #e4efe9;
+    background-color: #F3F3EB;
     /* padding-top: 30px; */
 }
 
@@ -84,6 +92,10 @@ p {
 
  #submitButton {
     font-family: FontAwesome;
+  }
+
+  ul {
+      position: relative;
   }
 
 ul, li {
@@ -147,13 +159,18 @@ a {
     margin-top: 10px;
 }
 
-/* .like-button {
-    background-color: rgb(231, 227, 227);
-} */
+.like-button {
+  font-size: 20px;
+}
 
 .like-button:hover {
     transform: scale(1.8); 
 }
+
+.dislike-button {
+    font-size: 20px;
+  }
+  
 
 .dislike-button:hover {
     transform: scale(1.8); 
@@ -251,3 +268,21 @@ select, options {
     padding-bottom: 5px;
 }
 
+.back {
+
+background-color: rgba(53, 48, 48, 0.082);
+margin-top: 10px;
+margin-bottom: 10px;
+}
+
+.fa-thumbs-o-up {
+    position: absolute;
+    bottom:30px;
+    right:5px;
+}
+
+.fa-thumbs-down {
+    position: absolute;
+    bottom:30px;
+    right:30px;
+}
