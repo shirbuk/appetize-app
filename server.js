@@ -35,18 +35,6 @@ app.get('/recipes', function (req, res) {
                     dietLabels: element.recipe.dietLabels, likes: 0
                 };
             });
-
-            // for (let i = 0; i < recipes.length; i++) {
-            //     var element = recipes[i];
-            //     Recipe.find({ url: element.url, title: element.title }, function (error, result) {
-            //         if (error) { return console.error(error); }
-            //         if (result.length) {
-            //             recipes[i].likes = result[0].likes;
-            //             console.log(element.likes);
-            //         }
-            //     });
-            // }
-
             res.send(recipes);
         } else if (response.statusCode == 403 || response.statusCode == 401) {
             res.send([]);
