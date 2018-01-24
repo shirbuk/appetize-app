@@ -6,8 +6,17 @@ var recipesApp = function () {
     var recipes = [];
     var savedRecipes = [];
 
-    function findRecipe(text) {
-        var url = 'recipes?recipe=' + text;
+    function findRecipe(text, diet) {
+  var url = "";
+      if (diet === "0"){
+   
+        url = 'recipes?recipe=' + text;
+      } else {
+
+        url = url = 'recipes?recipe=' + text + '&diet=' + diet;
+      }
+      
+      console.log(url);
         $.ajax({
             method: "GET",
             url: url,
@@ -133,11 +142,13 @@ app.popularRecipes();
 // click button "get recipes": 
 $(".main-btn").on('click', function () {
   var $input = $(".main-input");
+  var $dietType = $('.diet:selected');
+  
   if ($input.val() === "") {
     alert("Please enter text");
   }
   else {
-    app.findRecipe($input.val());
+    app.findRecipe($input.val(), $dietType.val());
     $input.val("");
   }
 })
@@ -155,7 +166,6 @@ $popularRecipes.on('click', '.like-button', function () {
 
 // $(".find-popular").on('click', function () {
 
-// });
 
 $('.popular-recipes').on('click', '.remove-recipe', function () {
   var index = $(this).closest('.popular-container').index();
@@ -163,15 +173,5 @@ $('.popular-recipes').on('click', '.remove-recipe', function () {
 });
 
 
-
-//on main buttton click.....
-
-// $('.diet:checkbox:checked').each(function () {
-//   for (var i = 0; i < recipes.healthLabels.length; i++) {
-//     if (recipes[i].healthLabels === $('.diet:checkbox:checked').val()) {
-//       console.log('hi');
-//     }
-//   }
-// });
 
 

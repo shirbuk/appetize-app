@@ -9,6 +9,7 @@
     <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
     <title>Appetize</title>
 </head>
@@ -23,30 +24,26 @@
                     <div class="main-img">
                         <div class="main">
                             <h1>Appetize</h1>
-                            <input type="text" placeholder="What would you ike to cook?" class="main-input">
-                            <br>
-                            <button class="btn btn-primary main-btn">
-                                <ahref="#recipes">Find Recipes</a>
-                            </button>
-    <!-- advanced search (by diet type) -->
-    <div class="dropdown">
-            <button class="btn btn-type-success dropbtn">Advanced Search</button>
-            <div class="dropdown-content">
-                <ul>
-                    <li><input type="checkbox" class="diet" value="vegan">Vegan</li>
-                    <li><input type="checkbox" class="diet" value="vegetarian">Vegetarian</li>
-                    <li><input type="checkbox" class="diet" value="dairy-free">dairy-free</li>
-                    <li><input type="checkbox" class="diet" value="low-sugar">low-sugar</li>
-                    <li><input type="checkbox" class="diet" value="low-fat-abs">low-fat-abs</li>
-                    <li><input type="checkbox" class="diet" value="sugar-conscious">sugar-conscious</li>
-                    <li><input type="checkbox" class="diet" value="fat-free">fat free</li>
-                    <li><input type="checkbox" class="diet" value="gluten-free">gluten free</li>
-                    <li><input type="checkbox" class="diet" value="wheat-free">wheat-free</li>
-                </ul>
-            </div>
-          </div>
+                            <form>
+                                <input type="text" placeholder="What would you ike to cook?" class="main-input">
+                                <br>
+                                <button class="btn btn-primary main-btn">
+                                    <ahref="#recipes">Find Recipes</a>
+                                </button>
+                                <!-- advanced search (by diet type) -->
+                                <!-- <button class="btn btn-type-success dropbtn">Diet Type</button> -->
 
-    <!-- end dropdown                         -->
+                                <select>
+                                    <option class="diet" value = "0">choose</option>
+                                    <option class="diet" value="low-fat">low-fat</option>
+                                    <option class="diet" value="low-carb">low-carb</option>
+                                    <option class="diet" value="low-sodium">low-sodium</option>
+                                    <option class="diet" value="high-protein">High-Protein</option>
+                                    <option class="diet" value="high-fiber">high-fiber</option>
+                                    <option class="diet" value="balanced">balanced</option>
+                                </select>
+                            </form>
+                            <!-- end dropdown                         -->
                             <br>
                             <a class="btn btn-primary find-popular" href="#popular">popular recipes</a>
                         </div>
@@ -84,15 +81,18 @@
             <div>
                     <ul class="list">
                         <li>
-                            <img src="{{imageUrl}}"><i id="submitButton" aria-hidden="true" class="like-button float-right fa fa-thumbs-o-up"></i>
+
+                            <a href="{{url}}" target="_blank"><img src="{{imageUrl}}"></a>    
+                             {{title}}   
+                            <i id="submitButton" aria-hidden="true" class="like-button float-right fa fa-thumbs-o-up"></i>
                             {{likes}}
                             <br>
-                            <a href="{{url}}" target="_blank">{{title}}</a>
                         </li>
                     </ul>
                    
             </div>
      </div>
+
         {{/each}} 
     </div>  
     </script>
