@@ -55,6 +55,12 @@ p {
     text-align: center;
     margin-top: 25px;
     font-family: 'Bitter', serif;
+    min-height: 1px;
+    display: none;
+}
+
+.show {
+    display: block;
 }
 
 .list {
