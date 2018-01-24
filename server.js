@@ -15,8 +15,21 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // get recipes from Edamam API and send to client
 app.get('/recipes', function (req, res) {
-    var url = `https://api.edamam.com/search?q=${req.query.recipe}&app_id=a41229b4&app_key=
-                e271a0d52d0ae4abe4ecd96af53df16a&from=0&to=8`;
+    var url = "";
+    if (req.query.diet) {
+
+        url = `https://api.edamam.com/search?q=${req.query.recipe}&app_id=a41229b4&app_key=
+e271a0d52d0ae4abe4ecd96af53df16a&from=0&to=8&diet=${req.query.diet}`;
+    } else {
+
+        url = `https://api.edamam.com/search?q=${req.query.recipe}&app_id=a41229b4&app_key=
+    e271a0d52d0ae4abe4ecd96af53df16a&from=0&to=8`;
+
+    }
+
+    console.log(url);
+
+
     request(url, function (error, response, body) {
         if (error) { return console.error(error); }
         if (response.statusCode == 200) {
@@ -25,7 +38,7 @@ app.get('/recipes', function (req, res) {
                 recipes = recipes.hits.map(function (element) {
                     return {
                         url: element.recipe.url, title: element.recipe.label, imageUrl: element.recipe.image,
-                        healthLabels: element.recipe.healthLabels, likes: 0
+                        dietLabels: element.recipe.dietLabels, likes: 0
                     };
                 });
 
@@ -44,6 +57,9 @@ app.get('/recipes', function (req, res) {
             } else {
                 res.send([]);
             }
+        } else if (response.statusCode == 403 || response.statusCode == 401){
+            res.send([]);
+
         }
     });
 });
