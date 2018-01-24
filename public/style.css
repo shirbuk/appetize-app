@@ -150,10 +150,18 @@ a {
     margin-top: 10px;
 }
 
-.like-button {
-    background-color: white;
+/* .like-button {
+    background-color: rgb(231, 227, 227);
+} */
 
+.like-button:hover {
+    transform: scale(1.8); 
 }
+
+.dislike-button:hover {
+    transform: scale(1.8); 
+}
+
 
 
 /* dropdown style */

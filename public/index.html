@@ -86,6 +86,7 @@
                             <a href="{{url}}" target="_blank"><img src="{{imageUrl}}"></a>    
                              {{title}}   
                             <i id="submitButton" aria-hidden="true" class="like-button float-right fa fa-thumbs-o-up"></i>
+                            <i aria-hidden="true" class="dislike-button float-left fa fa-thumbs-down"></i>
                             {{likes}}
                             <br>
                         </li>
@@ -110,8 +111,9 @@
                     <li>
                         <img src="{{imageUrl}}"><br>
                         <a href="{{url}}">{{title}}</a>
-                        <button class="remove-recipe">remove</button>
-                        <i aria-hidden="true" class="like-button float-right fa fa-thumbs-o-up"></i>
+                        <button aria-hidden="true" class="remove-recipe fa fa-trash-o">remove</button>
+                        <i aria-hidden="true" class="like-button float-right fa fa-thumbs-up"></i>
+                        <i aria-hidden="true" class="dislike-button float-left fa fa-thumbs-down"></i>
                         {{likes}}
                     </li>
 
