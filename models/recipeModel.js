@@ -8,7 +8,6 @@ var RecipeSchema = new mongoose.Schema({
     dietLabels: String,
     likes: Number
 });
-// { usePushEach: true });
 
 var Recipe = mongoose.model('Recipe', RecipeSchema);
 

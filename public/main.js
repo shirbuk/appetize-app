@@ -7,13 +7,11 @@ var recipesApp = function () {
     function findRecipe(text, diet) {
         var url = "";
         if (diet === "0") {
-
             url = 'recipes?recipe=' + text;
         } else {
             url = url = 'recipes?recipe=' + text + '&diet=' + diet;
         }
 
-        console.log(url);
         $.ajax({
             method: "GET",
             url: url,
@@ -31,11 +29,13 @@ var recipesApp = function () {
             }
         });
     }
+
     function findIndexByUrlAndTitle(recipe, array) {
         return array.findIndex(function (element) {
             return element.url === recipe.url && element.title === recipe.title;
         });
     }
+
     function likeRecipe(index, clickedOnPopular = false) {
         var recipe = {};
         if (clickedOnPopular) {
@@ -43,7 +43,7 @@ var recipesApp = function () {
         } else {
             recipe = recipes[index];
         }
-        console.log(recipe);
+
         $.ajax({
             method: "POST",
             url: 'recipes',
@@ -69,6 +69,7 @@ var recipesApp = function () {
             }
         });
     }
+
     function popularRecipes() {
         $.ajax({
             method: "GET",
@@ -80,21 +81,43 @@ var recipesApp = function () {
                 console.log(textStatus);
             }
         });
-    };
-    function deletePopularRecipe(index) {
-        console.log(savedRecipes[index]._id);
-        $.ajax({
-            type: 'DELETE',
-            url: '/recipes/' + savedRecipes[index]._id,
-            success: function (data) {
-                savedRecipes.splice(index, 1);
-                _renderPopular();
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                console.log(textStatus);
-            }
-        });
     }
+
+    function deletePopularRecipe(index, clickedOnPopular = false) {
+        if (!clickedOnPopular) {
+            index = findIndexByUrlAndTitle(recipes[index], savedRecipes);
+        }
+
+        if (index > -1) {
+            var recipe = savedRecipes[index];
+            $.ajax({
+                type: 'DELETE',
+                url: 'recipes/' + recipe._id + '?likes=' + recipe.likes,
+                success: function (data) {
+                    var indexInSaved = findIndexByUrlAndTitle(data, savedRecipes);
+                    var currRecipe = savedRecipes[indexInSaved];
+                    var indexInRecipes = findIndexByUrlAndTitle(currRecipe, recipes);
+                    
+                    if (indexInRecipes > -1 && recipes[indexInRecipes].likes > 0) {
+                        recipes[indexInRecipes].likes--;
+                        _renderPage();
+                    }
+
+                    if (currRecipe.likes > 1) { // recipe still have enough likes to stay in popular section
+                        currRecipe.likes--;
+                    } else {
+                        savedRecipes.splice(indexInSaved, 1);
+                    }
+                    
+                    _renderPopular();
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log(textStatus);
+                }
+            });
+        }
+    }
+
     // goes through the recipes array and puts them on the screen, using the handlebars template
     function _renderPage() {
         $recipeList.empty();
@@ -104,6 +127,7 @@ var recipesApp = function () {
         var newHTML = template(recipeData);
         $('.recipe-list').append(newHTML);
     }
+
     function _renderPopular() {
         $(".popular-recipes").empty();
         var source = $('#popular-template').html();
@@ -112,6 +136,7 @@ var recipesApp = function () {
         var newHTML = template(popularData);
         $('.popular-recipes').append(newHTML);
     }
+
     return {
         findRecipe: findRecipe,
         likeRecipe: likeRecipe,
@@ -119,8 +144,10 @@ var recipesApp = function () {
         deletePopularRecipe: deletePopularRecipe
     }
 }
+
 var app = recipesApp();
 app.popularRecipes();
+
 // click button "get recipes": 
 $(".main-btn").on('click', function () {
     var $input = $(".main-input");
@@ -130,20 +157,28 @@ $(".main-btn").on('click', function () {
         alert("Please enter text");
     }
     else {
+        $recipeList.empty();
         app.findRecipe($input.val(), $dietType.val());
         $input.val("");
     }
-})
+});
+
 $recipeList.on('click', '.like-button', function () {
     var index = $(this).closest('.recipe-container').index();
     app.likeRecipe(index);
 });
+
 $popularRecipes.on('click', '.like-button', function () {
     var index = $(this).closest('.popular-container').index();
     app.likeRecipe(index, true);
 });
-// $(".find-popular").on('click', function () {
-$('.popular-recipes').on('click', '.remove-recipe', function () {
-    var index = $(this).closest('.popular-container').index();
+
+$recipeList.on('click', '.dislike-button', function () {
+    var index = $(this).closest('.recipe-container').index();
     app.deletePopularRecipe(index);
+});
+
+$popularRecipes.on('click', '.dislike-button', function () {
+    var index = $(this).closest('.popular-container').index();
+    app.deletePopularRecipe(index, true);
 });
