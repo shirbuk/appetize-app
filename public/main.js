@@ -31,12 +31,12 @@ var recipesApp = function () {
         });
     }
 
-    function likeRecipe(index) {
+    function likeRecipe(index, clickedOnPopular = false) {
         var recipe = {};
-        if (recipes.length) {
-            recipe = recipes[index];
-        } else {
+        if (clickedOnPopular) {
             recipe = savedRecipes[index];
+        } else {
+            recipe = recipes[index];
         }
         console.log(recipe);
         $.ajax({
@@ -53,7 +53,7 @@ var recipesApp = function () {
                     savedRecipes.push(data);
                 }
 
-                if (recipes.length) {
+                if (recipes.length && findIndexByUrlAndTitle(data, recipes) > -1) {
                     recipes[findIndexByUrlAndTitle(data, recipes)].likes++;
                     _renderPage();
                 }
@@ -148,7 +148,7 @@ $recipeList.on('click', '.like-button', function () {
 
 $popularRecipes.on('click', '.like-button', function () {
     var index = $(this).closest('.popular-container').index();
-    app.likeRecipe(index);    
+    app.likeRecipe(index, true);    
 });
 
 
