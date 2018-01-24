@@ -24,18 +24,15 @@
                         <div class="main">
                             <h1>Appetize</h1>
 
-                            <input type="text" placeholder="What would you ike to cook?" class="main-input">
+                            <input type="text" placeholder="find your next favorite recipe" class="main-input">
                             <br>
                             <a class="btn btn-primary main-btn" href="#recipes">Find Recipes</a>
                             <!-- advanced search (by diet type) -->
                             <!-- <button class="btn btn-type-success dropbtn">Diet Type</button> -->
 
                             <select class="select-btn">
-                                <option class="diet" value="0">diet type
-                                        <i class="fas fa-angle-double-down"></i>
-
-
-                                </option>
+                                <option class="diet" value="0">diet type  </option>
+                                
                                 <option class="diet" value="low-fat">low-fat</option>
                                 <option class="diet" value="low-carb">low-carb</option>
                                 <option class="diet" value="low-sodium">low-sodium</option>
@@ -109,7 +106,6 @@
                     <li>
                         <a href="{{url}}" target="_blank"><img src="{{imageUrl}}"></a>    
                         {{title}}   
-                        <button class="remove-recipe">remove</button>
                         <i aria-hidden="true" class="like-button float-right fa fa-thumbs-o-up"></i>
                         <i aria-hidden="true" class="dislike-button float-left fa fa-thumbs-down"></i>
                         {{likes}}
