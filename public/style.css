@@ -14,19 +14,12 @@ body {
 
 header {
 
-    background-image: 
-      url("new-image-hack.jpg");
+    background-image: url("new-image-hack.jpg");
     background-size: cover;
     background-repeat: no-repeat;
-  
     height: 800px;;
     
-  /* -webkit-filter: blur(2px);
-  -moz-filter: blur(2px);
-  -o-filter: blur(2px);
-  -ms-filter: blur(2px);
-  filter: blur(2px);
-} */
+
 }
 h1 {
     font: 400 140px/0.8 'Cookie', Helvetica, sans-serif;
@@ -56,72 +49,12 @@ h2 {
 }
 
 .main-btn {
-    background-color: #544239;
-    opacity: 0.7;
-    line-height: 50px;
-    height: 50px;
-    text-align: center;
-    margin: auto;
-    width: 250px;
-    cursor: pointer;
-    color: #FFF;
-    transition: all 0.3s;
-    position: relative;
+    
     margin-top: 10px;
 
-    border-left: none;
-    border-right: none;
-
 }
-
-.main-btn span {
-    transition: all 0.3s;
-
-}
-.main-btn::before {
-	content: '';
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	z-index: 1;
-	opacity: 0;
-	transition: all 0.3s;
-	border-top-width: 1px;
-	border-bottom-width: 1px;
-	border-top-style: solid;
-	border-bottom-style: solid;
-	border-top-color: rgba(255,255,255,0.5);
-	border-bottom-color: rgba(255,255,255,0.5);
-	transform: scale(0.1, 1);
-}
-.main-btn:hover span {
-	letter-spacing: 2px;
-}
-.main-btn:hover::before {
-	opacity: 1;	
-	transform: scale(1, 1);	
-}
-.main-btn::after {
-	content: '';
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	z-index: 1;
-	transition: all 0.3s;
-	background-color: rgba(182, 25, 25, 0.1);
-}
-.main-btn:hover::after {
-	opacity: 0;	
-	transform: scale(0.1, 1);
-}
-
 #recipe-template {
-    background-color: #E2E1CA;
-   
+    background-color: #E2E1CA; 
     width: 100%;
 }
 
@@ -194,7 +127,7 @@ width: 100%;
     text-align: center;
 }
 
-/* a {
+a {
 
     font-weight: bold;
     text-decoration: none;
@@ -203,10 +136,14 @@ width: 100%;
     max-width: 270px;
   
 
-} */
+}
 
 .find-popular {
 
     margin-top: 10px;
 }
 
+.like-button {
+    background-color: white;
+    border-radius: 
+}
