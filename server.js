@@ -25,9 +25,21 @@ app.get('/recipes', function (req, res) {
                 recipes = recipes.hits.map(function (element) {
                     return {
                         url: element.recipe.url, title: element.recipe.label, imageUrl: element.recipe.image,
-                        healthLabels: element.recipe.healthLabels
+                        healthLabels: element.recipe.healthLabels, likes: 0
                     };
                 });
+
+                for (let i = 0; i < recipes.length; i++) {
+                    var element = recipes[i];
+                    Recipe.find({ url: element.url, title: element.title }, function (error, result) {
+                        if (error) { return console.error(error); }
+                        if (result.length) {
+                            recipes[i].likes = result[0].likes;
+                            console.log(element.likes);
+                        }
+                    });
+                }
+
                 res.send(recipes);
             } else {
                 res.send([]);
@@ -38,20 +50,39 @@ app.get('/recipes', function (req, res) {
 
 // add a recipe to the DB
 app.post('/recipes', function (req, res) {
-    var newRecipe = new Recipe(req.body);
-    newRecipe.save(function (err, data) {
-        if (err) throw err;
-        res.send(data);
-    });
+    if (req.body.likes > 0) {
+        req.body.likes++;
+        Recipe.findOneAndUpdate({ url: req.body.url, title: req.body.title }, { $set: req.body }, { new: true },
+            function (error, result) {
+                if (error) { return console.error(error); }
+                res.send(result);
+            });
+    } else {
+        req.body.likes++;
+        var newRecipe = new Recipe(req.body);
+        newRecipe.save(function (err, data) {
+            if (err) { return console.error(err); }
+            res.send(data);
+        });
+    }
 });
 
 // delete a recipe from DB
 app.delete('/recipes/:recipeId', function (req, res) {
-    Recipe.findByIdAndRemove(req.params.recipeId, function (err, data) {
-        if (err) throw err;
-        res.send(data);
-    })
-})
+    if (req.body.likes > 1) {
+        req.body.likes--;
+        Recipe.findOneAndUpdate({ url: req.body.url, title: req.body.title }, { $set: req.body }, { new: true },
+            function (error, result) {
+                if (error) { return console.error(error); }
+                res.send(result);
+            });
+    } else {
+        Recipe.findOneAndRemove({ url: req.body.url, title: req.body.title }, function (err, data) {
+            if (err) throw err;
+            res.send(data);
+        });
+    }
+});
 
 // get all saved recipes from DB and send to client
 app.get('/popular', function (req, res) {

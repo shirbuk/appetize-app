@@ -65,7 +65,7 @@
                     <ul class="list">
                         <li>
                             <img src="{{imageUrl}}"><i id="submitButton" aria-hidden="true" class="like-button float-right fa fa-thumbs-o-up"></i>
-                                
+                            {{likes}}
                             <br>
                             <a href="{{url}}" target="_blank">{{title}}</a>
                         </li>
@@ -90,7 +90,8 @@
                         <img src="{{imageUrl}}"><br>
                         <a href="{{url}}">{{title}}</a>
                         <button class="remove-recipe">remove</button>
-
+                        <i aria-hidden="true" class="like-button float-right fa fa-thumbs-o-up"></i>
+                        {{likes}}
                     </li>
 
 
