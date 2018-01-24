@@ -2,6 +2,7 @@ var $recipeList = $(".recipe-list"); // search for recipes form
 var $popularRecipes = $('.popular-recipes');
 
 var recipesApp = function () {
+
     var recipes = [];
     var savedRecipes = [];
 
@@ -131,19 +132,19 @@ app.popularRecipes();
 
 // click button "get recipes": 
 $(".main-btn").on('click', function () {
-    var $input = $(".main-input");
-    if ($input.val() === "") {
-        alert("Please enter text");
-    }
-    else {
-        app.findRecipe($input.val());
-        $input.val("");
-    }
+  var $input = $(".main-input");
+  if ($input.val() === "") {
+    alert("Please enter text");
+  }
+  else {
+    app.findRecipe($input.val());
+    $input.val("");
+  }
 })
 
 $recipeList.on('click', '.like-button', function () {
-    var index = $(this).closest('.recipe-container').index();
-    app.likeRecipe(index);    
+  var index = $(this).closest('.recipe-container').index();
+  app.likeRecipe(index);
 });
 
 $popularRecipes.on('click', '.like-button', function () {
@@ -153,10 +154,24 @@ $popularRecipes.on('click', '.like-button', function () {
 
 
 // $(".find-popular").on('click', function () {
-    
+
 // });
 
 $('.popular-recipes').on('click', '.remove-recipe', function () {
-    var index = $(this).closest('.popular-container').index();
-    app.deletePopularRecipe(index);
+  var index = $(this).closest('.popular-container').index();
+  app.deletePopularRecipe(index);
 });
+
+
+
+//on main buttton click.....
+
+// $('.diet:checkbox:checked').each(function () {
+//   for (var i = 0; i < recipes.healthLabels.length; i++) {
+//     if (recipes[i].healthLabels === $('.diet:checkbox:checked').val()) {
+//       console.log('hi');
+//     }
+//   }
+// });
+
+
