@@ -9,7 +9,7 @@
       }
 
 body {
-    background-color: #E2E1CA;
+    background-color: #e2ebf0;
 }
 
 header {
@@ -35,7 +35,7 @@ h2 {
 
 .main {
 
-    padding-top: 500px;
+    padding-top: 400px;
 }
 
 .main-input {
@@ -54,19 +54,19 @@ h2 {
 
 }
 #recipe-template {
-    background-color: #E2E1CA; 
+    background-color: #e4efe9; 
     width: 100%;
 }
 
 .popular-row {
 
-    background-color: #E2E1CA;
+    background-color: #e4efe9;
 }
 
 .recipe-list {
     text-align: center;
     margin-top: 25px;
-
+    font-family: 'Bitter', serif;
 }
 
  
@@ -90,7 +90,7 @@ ul, li {
 }
 
 li {
-    height: 330px;
+    height: 250px;
 }
 
 .list img {
