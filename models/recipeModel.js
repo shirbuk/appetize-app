@@ -5,7 +5,7 @@ var RecipeSchema = new mongoose.Schema({
     url: String,
     title: String,
     imageUrl: String,
-    healthLabels: String,
+    dietLabels: String,
     likes: Number
 });
 // { usePushEach: true });

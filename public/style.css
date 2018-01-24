@@ -36,6 +36,9 @@ h2 {
     text-align: center;
 }
 
+p {
+    font-family: 'Raleway', sans-serif;
+}
 .main {
 
     padding-top: 400px;
@@ -64,6 +67,7 @@ h2 {
 .popular-row {
 
     background-color: #e4efe9;
+    /* padding-top: 30px; */
 }
 
 .recipe-list {
@@ -175,6 +179,7 @@ a {
 .dropdown {
     position: relative;
     display: inline-block;
+    
 }
 
 /* Dropdown Content (Hidden by Default) */
@@ -185,6 +190,8 @@ a {
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
+    border-radius: 5px;
+   
 }
 .dropdown-content li {
   height: 30px;
