@@ -54,11 +54,7 @@ p {
     font-family: 'Cookie', Helvetica, sans-serif;
 }
 
-.main-btn {
-    
-    margin-top: 10px;
 
-}
 #recipe-template {
     background-color: #e4efe9; 
     width: 100%;
@@ -213,3 +209,24 @@ a {
     background-color: #5f8160;
 }
 
+select {
+    border-radius: 5px;
+    background-color: rgba(250, 244, 244, 0);
+    height: 36px;
+    border: 2px solid white;
+    -webkit-text-fill-color: white;
+    
+}
+
+.select-btn {
+
+    margin-top: 5px;
+}
+
+
+
+.down {
+    color: white;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}

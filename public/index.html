@@ -33,8 +33,8 @@
                                 <!-- advanced search (by diet type) -->
                                 <!-- <button class="btn btn-type-success dropbtn">Diet Type</button> -->
 
-                                <select>
-                                    <option class="diet" value = "0">choose</option>
+                                <select class="select-btn">
+                                    <option class="diet" value = "0">diet type<i class="arrow down"></i></option>
                                     <option class="diet" value="low-fat">low-fat</option>
                                     <option class="diet" value="low-carb">low-carb</option>
                                     <option class="diet" value="low-sodium">low-sodium</option>
@@ -107,8 +107,8 @@
             <div>
                 <ul class="pop">
                     <li>
-                        <img src="{{imageUrl}}"><br>
-                        <a href="{{url}}">{{title}}</a>
+                        <a href="{{url}}" target="_blank"><img src="{{imageUrl}}"></a>    
+                        {{title}}   
                         <button class="remove-recipe">remove</button>
                         <i aria-hidden="true" class="like-button float-right fa fa-thumbs-o-up"></i>
                         {{likes}}
