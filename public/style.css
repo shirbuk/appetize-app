@@ -224,8 +224,14 @@ select {
     height: 36px;
     border: 2px solid white;
     -webkit-text-fill-color: white;
+    -webkit-appearance: none;
+
+    background-image:url(arrow-icon.png);
+background-repeat:no-repeat;
+background-position:right;
     
 }
+
 
 .select-btn {
 
@@ -244,3 +250,4 @@ p {
 select, options {
     padding-bottom: 5px;
 }
+
