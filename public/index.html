@@ -15,7 +15,6 @@
 </head>
 
 <body>
-
     <!-- main image + input + button -->
     <header>
         <div class="container-fluid">
@@ -24,7 +23,6 @@
                     <div class="main-img">
                         <div class="main">
                             <h1>Appetize</h1>
-
                             <form>
                                 <input type="text" placeholder="What would you ike to cook?" class="main-input">
                                 <br>
@@ -33,9 +31,10 @@
                                 </button>
                                 <!-- advanced search (by diet type) -->
                                 <!-- <button class="btn btn-type-success dropbtn">Diet Type</button> -->
-
-                                <select>
-                                    <option class="diet" value = "0">choose</option>
+                                <select class="select-btn">
+                                    <option class="diet" value="0">diet type
+                                        <i class="arrow down"></i>
+                                    </option>
                                     <option class="diet" value="low-fat">low-fat</option>
                                     <option class="diet" value="low-carb">low-carb</option>
                                     <option class="diet" value="low-sodium">low-sodium</option>
@@ -53,7 +52,6 @@
             </div>
         </div>
     </header>
-
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-10 offset-md-1">
@@ -62,8 +60,6 @@
                 </section>
             </div>
         </div>
-
-
         <div class="row popular-row">
             <div class="col-md-10 offset-md-1">
                 <section id="popular">
@@ -71,7 +67,6 @@
                 </section>
             </div>
         </div>
-
     </div>
     <script id="recipe-template" type="text/x-handlebars-template">
         <h2>Enjoy one of these amazing recipes</h2>
@@ -82,7 +77,6 @@
             <div>
                     <ul class="list">
                         <li>
-
                             <a href="{{url}}" target="_blank"><img src="{{imageUrl}}"></a>    
                              {{title}}   
                             <i id="submitButton" aria-hidden="true" class="like-button float-right fa fa-thumbs-o-up"></i>
@@ -93,32 +87,25 @@
                    
             </div>
      </div>
-
         {{/each}} 
     </div>  
     </script>
-
     <script id="popular-template" type="text/x-handlebars-template">
         <h2>Popular Recipes</h2>
         <hr>
         <div class="popular-wrapper">
         {{#each popularArray}}
         <div class="popular-container col-md-3 float-left" data-id="{{_id}}">
-
             <div>
                 <ul class="pop">
                     <li>
-                        <img src="{{imageUrl}}"><br>
-                        <a href="{{url}}">{{title}}</a>
+                        <a href="{{url}}" target="_blank"><img src="{{imageUrl}}"></a>    
+                        {{title}}   
                         <button class="remove-recipe">remove</button>
                         <i aria-hidden="true" class="like-button float-right fa fa-thumbs-o-up"></i>
                         {{likes}}
                     </li>
-
-
                 </ul>
-
-
             </div>
         </div>
         {{/each}}
