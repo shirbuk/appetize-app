@@ -33,6 +33,7 @@ var recipesApp = function () {
             success: function (data) {
                 savedRecipes.push(data);
                 console.log(savedRecipes);
+                _renderPopular();
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 console.log(textStatus);
@@ -98,6 +99,10 @@ var recipesApp = function () {
 
 var app = recipesApp();
 
+
+app.popularRecipes();
+
+
 // click button "get recipes": 
 $(".main-btn").on('click', function () {
     var $input = $(".main-input");
@@ -113,11 +118,12 @@ $(".main-btn").on('click', function () {
 $recipeList.on('click', '.like-button', function () {
     var index = $(this).closest('.recipe-container').index();
     app.likeRecipe(index);
+    
 });
 
-$(".find-popular").on('click', function () {
-    app.popularRecipes();
-});
+// $(".find-popular").on('click', function () {
+    
+// });
 
 $('.popular-recipes').on('click', '.remove-recipe', function () {
     var index = $(this).closest('.popular-container').index();
