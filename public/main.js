@@ -55,10 +55,10 @@ var recipesApp = function () {
 
                 if (recipes.length) {
                     recipes[findIndexByUrlAndTitle(data, recipes)].likes++;
+                    _renderPage();
                 }
-                
+
                 console.log(savedRecipes);
-                _renderPage();
                 _renderPopular();
             },
             error: function (jqXHR, textStatus, errorThrown) {
