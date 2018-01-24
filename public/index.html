@@ -27,6 +27,25 @@
                             <button class="btn btn-primary main-btn">
                                 <ahref="#recipes">Find Recipes</a>
                             </button>
+    <!-- advanced search (by diet type) -->
+    <div class="dropdown">
+            <button class="btn btn-type-success dropbtn">Advanced Search</button>
+            <div class="dropdown-content">
+                <ul>
+                    <li><input type="checkbox" class="diet" value="vegan">Vegan</li>
+                    <li><input type="checkbox" class="diet" value="vegetarian">Vegetarian</li>
+                    <li><input type="checkbox" class="diet" value="dairy-free">dairy-free</li>
+                    <li><input type="checkbox" class="diet" value="low-sugar">low-sugar</li>
+                    <li><input type="checkbox" class="diet" value="low-fat-abs">low-fat-abs</li>
+                    <li><input type="checkbox" class="diet" value="sugar-conscious">sugar-conscious</li>
+                    <li><input type="checkbox" class="diet" value="fat-free">fat free</li>
+                    <li><input type="checkbox" class="diet" value="gluten-free">gluten free</li>
+                    <li><input type="checkbox" class="diet" value="wheat-free">wheat-free</li>
+                </ul>
+            </div>
+          </div>
+
+    <!-- end dropdown                         -->
                             <br>
                             <a class="btn btn-primary find-popular" href="#popular">popular recipes</a>
                         </div>
@@ -106,6 +125,7 @@
     async defer
     src="//assets.pinterest.com/pin/create/button" data-pin-do="buttonPin" data-pin-custom="true"></script> -->
     <script src="jquery/dist/jquery.js"></script>
+    <script src="bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="handlebars/dist/handlebars.js"></script>
     <script src="main.js"></script>
 </body>
