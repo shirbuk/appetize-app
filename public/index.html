@@ -66,57 +66,48 @@
             </div>
         </div>
     </div>
+
     <script id="recipe-template" type="text/x-handlebars-template">
         <h2>Enjoy one of these amazing recipes</h2>
         <hr>
         <div class="recipe-wrapper">  
-        {{#each recipeArray}}
-    <div class="recipe-container col-sm-3 col-xs-6 float-left">
-            <div>
-
-                <ul class="list">
-                    <li>
-                        <a href="{{url}}" target="_blank"><img src="{{imageUrl}}"></a>    
-                        <div class="title"> {{title}} </div>
-                        <i id="submitButton" aria-hidden="true" class="like-button float-right fa fa-thumbs-o-up"></i>
-                         <i aria-hidden="true" class="dislike-button float-left fa fa-thumbs-down"></i>
-
-                            {{likes}}
-                        <br>
-                    </li>
-                </ul>      
+            {{#each recipeArray}}
+            <div class="recipe-container col-lg-3 col-md-4 col-sm-6 col-12">
+                <div class="list">
+                    <a href="{{url}}" target="_blank"><img src="{{imageUrl}}"></a>
+                    <div>
+                        <i aria-hidden="true" class="like-button fa fa-thumbs-o-up"></i>
+                        <span class="likes">{{likes}}</span>
+                        <i aria-hidden="true" class="dislike-button fa fa-thumbs-o-down"></i>
+                    </div>
+                    <div class="title">{{title}}</div>
+                </div>
             </div>
-
-    </div>
-
-
-        {{/each}} 
-    </div>  
+            {{/each}} 
+        </div>  
     </script>
+
     <script id="popular-template" type="text/x-handlebars-template">
         <h2>Popular Recipes</h2>
         <p>Try out our top-rated recipes</p>
         <hr>
         <div class="popular-wrapper">
-        {{#each popularArray}}
-        <div class="popular-container col-md-3 float-left" data-id="{{_id}}">
-            <div>
-                <ul class="pop">
-                    <li>
-                        <a href="{{url}}" target="_blank"><img src="{{imageUrl}}"></a>
-                        {{title}}
-                        <i aria-hidden="true" class="like-button float-right fa fa-thumbs-o-up"></i>
-                        <i aria-hidden="true" class="dislike-button float-left fa fa-thumbs-down"></i>
-                        {{likes}}
-                        <br>
-                   </li>
-
-                </ul>
+            {{#each popularArray}}
+            <div class="popular-container col-lg-3 col-md-4 col-sm-6 col-12" data-id="{{_id}}">
+                <div class="list">
+                    <a href="{{url}}" target="_blank"><img src="{{imageUrl}}"></a>
+                    <div>
+                        <i aria-hidden="true" class="like-button fa fa-thumbs-o-up"></i>
+                        <span class="likes">{{likes}}</span>
+                        <i aria-hidden="true" class="dislike-button fa fa-thumbs-o-down"></i>
+                    </div>
+                    <div class="title">{{title}}</div>
+                </div>
             </div>
-        </div>
-        {{/each}}
+            {{/each}}
         </div>
     </script>
+
     <!-- <script type="text/javascript"
     async defer
     src="//assets.pinterest.com/pin/create/button" data-pin-do="buttonPin" data-pin-custom="true"></script> -->
