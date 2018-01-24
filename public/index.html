@@ -15,7 +15,6 @@
 </head>
 
 <body>
-
     <!-- main image + input + button -->
     <header>
         <div class="container-fluid">
@@ -46,6 +45,7 @@
                             </select>
 
                             <!-- end dropdown                         -->
+
                             <br>
                             <a class="btn btn-primary find-popular" href="#popular">Popular Recipes</a>
                         </div>
@@ -54,7 +54,6 @@
             </div>
         </div>
     </header>
-
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-10 offset-md-1">
@@ -63,8 +62,6 @@
                 </section>
             </div>
         </div>
-
-
         <div class="row popular-row">
             <div class="col-md-10 offset-md-1">
                 <section id="popular">
@@ -72,7 +69,6 @@
                 </section>
             </div>
         </div>
-
     </div>
     <script id="recipe-template" type="text/x-handlebars-template">
         <h2>Enjoy one of these amazing recipes</h2>
@@ -81,22 +77,26 @@
         {{#each recipeArray}}
     <div class="recipe-container col-sm-3 col-xs-6 float-left">
             <div>
+
                 <ul class="list">
                     <li>
                         <a href="{{url}}" target="_blank"><img src="{{imageUrl}}"></a>    
                              {{title}}   
                         <i id="submitButton" aria-hidden="true" class="like-button float-right fa fa-thumbs-o-up"></i>
+                         <i aria-hidden="true" class="dislike-button float-left fa fa-thumbs-down"></i>
+
                             {{likes}}
                         <br>
                     </li>
                 </ul>      
             </div>
+
     </div>
+
 
         {{/each}} 
     </div>  
     </script>
-
     <script id="popular-template" type="text/x-handlebars-template">
         <h2>Popular Recipes</h2>
         <p>Try out our top-rated recipes</p>
@@ -111,8 +111,11 @@
                         {{title}}   
                         <button class="remove-recipe">remove</button>
                         <i aria-hidden="true" class="like-button float-right fa fa-thumbs-o-up"></i>
+                        <i aria-hidden="true" class="dislike-button float-left fa fa-thumbs-down"></i>
                         {{likes}}
+
                    </li>
+
                 </ul>
             </div>
         </div>

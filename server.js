@@ -8,6 +8,7 @@ mongoose.connect(process.env.CONNECTION_STRING || 'mongodb://localhost/appetizeD
 var Recipe = require('./models/recipeModel');
 
 var app = express();
+
 app.use(express.static('public'));
 app.use(express.static('node_modules'));
 app.use(bodyParser.json());
@@ -17,19 +18,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.get('/recipes', function (req, res) {
     var url = "";
     if (req.query.diet) {
-
         url = `https://api.edamam.com/search?q=${req.query.recipe}&app_id=a41229b4&app_key=
 e271a0d52d0ae4abe4ecd96af53df16a&from=0&to=8&diet=${req.query.diet}`;
     } else {
-
         url = `https://api.edamam.com/search?q=${req.query.recipe}&app_id=a41229b4&app_key=
     e271a0d52d0ae4abe4ecd96af53df16a&from=0&to=8`;
-
     }
-
-    console.log(url);
-
-
+    // console.log(url);
     request(url, function (error, response, body) {
         if (error) { return console.error(error); }
         if (response.statusCode == 200) {
@@ -41,7 +36,6 @@ e271a0d52d0ae4abe4ecd96af53df16a&from=0&to=8&diet=${req.query.diet}`;
                         dietLabels: element.recipe.dietLabels, likes: 0
                     };
                 });
-
                 for (let i = 0; i < recipes.length; i++) {
                     var element = recipes[i];
                     Recipe.find({ url: element.url, title: element.title }, function (error, result) {
@@ -52,18 +46,16 @@ e271a0d52d0ae4abe4ecd96af53df16a&from=0&to=8&diet=${req.query.diet}`;
                         }
                     });
                 }
-
+                console.log(recipes);
                 res.send(recipes);
             } else {
                 res.send([]);
             }
         } else if (response.statusCode == 403 || response.statusCode == 401){
             res.send([]);
-
         }
     });
 });
-
 // add a recipe to the DB
 app.post('/recipes', function (req, res) {
     if (req.body.likes > 0) {
@@ -82,7 +74,6 @@ app.post('/recipes', function (req, res) {
         });
     }
 });
-
 // delete a recipe from DB
 app.delete('/recipes/:recipeId', function (req, res) {
     if (req.body.likes > 1) {
@@ -99,7 +90,6 @@ app.delete('/recipes/:recipeId', function (req, res) {
         });
     }
 });
-
 // get all saved recipes from DB and send to client
 app.get('/popular', function (req, res) {
     Recipe.find(function (error, result) {
@@ -107,8 +97,6 @@ app.get('/popular', function (req, res) {
         res.send(result);
     });
 });
-
-
 app.listen(process.env.PORT || '8000', function () {
     console.log('you r connected to port 8000!');
 });
