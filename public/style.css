@@ -47,6 +47,7 @@ p {
 .main-input {
     border-radius: 5px;
     margin-top: 20px;
+    margin-bottom: 10px;
     width: 350px;
 }
 .main-input:placeholder {
@@ -54,11 +55,7 @@ p {
     font-family: 'Cookie', Helvetica, sans-serif;
 }
 
-.main-btn {
-    
-    margin-top: 10px;
 
-}
 #recipe-template {
     background-color: #e4efe9; 
     width: 100%;
@@ -76,7 +73,7 @@ p {
     font-family: 'Bitter', serif;
 }
 
- 
+ /* hi! */
  .list a {
     font-weight: bold;
     text-decoration: none;
@@ -221,3 +218,29 @@ a {
     background-color: #5f8160;
 }
 
+select {
+    border-radius: 5px;
+    background-color: rgba(250, 244, 244, 0);
+    height: 36px;
+    border: 2px solid white;
+    -webkit-text-fill-color: white;
+    
+}
+
+.select-btn {
+
+    margin-top: 5px;
+}
+.down {
+    color: white;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+
+p {
+    font-family:'Raleway', sans-serif;
+}
+
+select, options {
+    padding-bottom: 5px;
+}

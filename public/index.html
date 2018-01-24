@@ -23,26 +23,31 @@
                     <div class="main-img">
                         <div class="main">
                             <h1>Appetize</h1>
-                                <input type="text" placeholder="What would you ike to cook?" class="main-input">
-                                <br>
-                                <button class="btn btn-primary main-btn">
-                                    <ahref="#recipes">Find Recipes</a>
-                                </button>
-                                <!-- advanced search (by diet type) -->
-                                <!-- <button class="btn btn-type-success dropbtn">Diet Type</button> -->
-                                <select class="select-btn">
-                                    <option class="diet" value="0">diet type
-                                        <i class="arrow down"></i>
-                                    </option>
-                                    <option class="diet" value="low-fat">low-fat</option>
-                                    <option class="diet" value="low-carb">low-carb</option>
-                                    <option class="diet" value="low-sodium">low-sodium</option>
-                                    <option class="diet" value="high-protein">High-Protein</option>
-                                    <option class="diet" value="high-fiber">high-fiber</option>
-                                    <option class="diet" value="balanced">balanced</option>
-                                </select>
+
+                            <input type="text" placeholder="What would you ike to cook?" class="main-input">
                             <br>
-                            <a class="btn btn-primary find-popular" href="#popular">popular recipes</a>
+                            <a class="btn btn-primary main-btn" href="#recipes">Find Recipes</a>
+                            <!-- advanced search (by diet type) -->
+                            <!-- <button class="btn btn-type-success dropbtn">Diet Type</button> -->
+
+                            <select class="select-btn">
+                                <option class="diet" value="0">diet type
+                                        <i class="fas fa-angle-double-down"></i>
+
+
+                                </option>
+                                <option class="diet" value="low-fat">low-fat</option>
+                                <option class="diet" value="low-carb">low-carb</option>
+                                <option class="diet" value="low-sodium">low-sodium</option>
+                                <option class="diet" value="high-protein">High-Protein</option>
+                                <option class="diet" value="high-fiber">high-fiber</option>
+                                <option class="diet" value="balanced">balanced</option>
+                            </select>
+
+                            <!-- end dropdown                         -->
+
+                            <br>
+                            <a class="btn btn-primary find-popular" href="#popular">Popular Recipes</a>
                         </div>
                     </div>
                 </div>
@@ -72,24 +77,29 @@
         {{#each recipeArray}}
     <div class="recipe-container col-sm-3 col-xs-6 float-left">
             <div>
-                    <ul class="list">
-                        <li>
-                            <a href="{{url}}" target="_blank"><img src="{{imageUrl}}"></a>    
+
+                <ul class="list">
+                    <li>
+                        <a href="{{url}}" target="_blank"><img src="{{imageUrl}}"></a>    
                              {{title}}   
-                            <i id="submitButton" aria-hidden="true" class="like-button float-right fa fa-thumbs-o-up"></i>
-                            <i aria-hidden="true" class="dislike-button float-left fa fa-thumbs-down"></i>
+                        <i id="submitButton" aria-hidden="true" class="like-button float-right fa fa-thumbs-o-up"></i>
+                         <i aria-hidden="true" class="dislike-button float-left fa fa-thumbs-down"></i>
+
                             {{likes}}
-                            <br>
-                        </li>
-                    </ul>
-                   
+                        <br>
+                    </li>
+                </ul>      
             </div>
-     </div>
+
+    </div>
+
+
         {{/each}} 
     </div>  
     </script>
     <script id="popular-template" type="text/x-handlebars-template">
         <h2>Popular Recipes</h2>
+        <p>Try out our top-rated recipes</p>
         <hr>
         <div class="popular-wrapper">
         {{#each popularArray}}
@@ -103,7 +113,9 @@
                         <i aria-hidden="true" class="like-button float-right fa fa-thumbs-o-up"></i>
                         <i aria-hidden="true" class="dislike-button float-left fa fa-thumbs-down"></i>
                         {{likes}}
-                    </li>
+
+                   </li>
+
                 </ul>
             </div>
         </div>
