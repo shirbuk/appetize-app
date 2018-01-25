@@ -52,17 +52,22 @@
     </header>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-10 offset-md-1">
+            <div class="col-md-10 offset-md-1 back">
                 <section id="recipes">
                     <div class="recipe-list"></div>
                 </section>
             </div>
         </div>
         <div class="row popular-row">
-            <div class="col-md-10 offset-md-1">
+            <div class="col-md-10 offset-md-1 back">
                 <section id="popular">
-                    <div class="popular-recipes"></div>
+                    <div class="popular-recipes">
+
+                           
+                    </div>
+                 
                 </section>
+              
             </div>
         </div>
     </div>
@@ -71,6 +76,7 @@
         <h2>Enjoy one of these amazing recipes</h2>
         <hr>
         <div class="recipe-wrapper">  
+
             {{#each recipeArray}}
             <div class="recipe-container col-lg-3 col-md-4 col-sm-6 col-12">
                 <div class="list">
@@ -85,6 +91,7 @@
             </div>
             {{/each}} 
         </div>  
+
     </script>
 
     <script id="popular-template" type="text/x-handlebars-template">
@@ -92,6 +99,7 @@
         <p>Try out our top-rated recipes</p>
         <hr>
         <div class="popular-wrapper">
+
             {{#each popularArray}}
             <div class="popular-container col-lg-3 col-md-4 col-sm-6 col-12" data-id="{{_id}}">
                 <div class="list">
@@ -105,6 +113,7 @@
                 </div>
             </div>
             {{/each}}
+
         </div>
     </script>
 

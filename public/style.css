@@ -1,9 +1,8 @@
 * {
     box-sizing: border-box;
 }
-
 body {
-    background-color: #e2ebf0;
+    background-color: #F3F3EB;
     min-width: 400px;
 }
 
@@ -29,6 +28,7 @@ h2 {
 
 p {
     font-family: 'Raleway', sans-serif;
+    padding-top: 7px;
 }
 
 .main {
@@ -47,8 +47,8 @@ p {
 }
 
 .popular-row {
-    background-color: #e4efe9;
-    /* padding-top: 30px; */
+    background-color: #F3F3EB;
+
 }
 
 .recipe-list {
@@ -64,6 +64,7 @@ p {
 } */
 
 .list {
+
     margin-left: 0;
     padding-left: 0;
     margin-bottom: 20px;
@@ -141,6 +142,7 @@ a {
 
 .like-button:hover, .dislike-button:hover {
     transform: scale(1.8);
+
 }
 
 /* dropdown style */
@@ -223,4 +225,23 @@ select {
 
 select, options {
     padding-bottom: 5px;
+}
+
+.back {
+
+background-color: rgba(53, 48, 48, 0.082);
+margin-top: 10px;
+margin-bottom: 10px;
+}
+
+.fa-thumbs-o-up {
+    position: absolute;
+    bottom:30px;
+    right:5px;
+}
+
+.fa-thumbs-o-down {
+    position: absolute;
+    bottom:30px;
+    right:30px;
 }
