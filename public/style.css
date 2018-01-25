@@ -89,6 +89,7 @@ a.before:hover:before, a.after:hover:after{
     font-size:100%;
     padding:7px 11px;
     border: 2px solid white;
+    color: white;
   }
   .square:before,.square:after{
     content: "";
