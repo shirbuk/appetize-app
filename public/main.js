@@ -127,6 +127,7 @@ var recipesApp = function () {
 
     // goes through the recipes array and puts them on the screen, using the handlebars template
     function _renderPage() {
+        $('.spinner').removeClass('show');
         $recipeList.empty();
         var source = $('#recipe-template').html();
         var template = Handlebars.compile(source);
@@ -160,6 +161,7 @@ app.popularRecipes();
 
 // click button "get recipes": 
 $(".main-btn").on('click', function () {
+    $recipeList.empty();
     var $input = $(".main-input");
     var $dietType = $('.diet:selected');
 
@@ -167,7 +169,7 @@ $(".main-btn").on('click', function () {
         alert("Please enter text");
     }
     else {
-        $recipeList.empty();
+        $('.spinner').addClass('show');
         app.findRecipe($input.val(), $dietType.val());
         // $('.recipe-list').toggleClass('show');
         $input.val("");
