@@ -19,43 +19,29 @@ app.get('/recipes', function (req, res) {
     var url = "";
     if (req.query.diet) {
         url = `https://api.edamam.com/search?q=${req.query.recipe}&app_id=a41229b4&app_key=
-e271a0d52d0ae4abe4ecd96af53df16a&from=0&to=8&diet=${req.query.diet}`;
+                e271a0d52d0ae4abe4ecd96af53df16a&from=0&to=8&diet=${req.query.diet}`;
     } else {
         url = `https://api.edamam.com/search?q=${req.query.recipe}&app_id=a41229b4&app_key=
-    e271a0d52d0ae4abe4ecd96af53df16a&from=0&to=8`;
+                e271a0d52d0ae4abe4ecd96af53df16a&from=0&to=8`;
     }
-    // console.log(url);
+
     request(url, function (error, response, body) {
         if (error) { return console.error(error); }
         if (response.statusCode == 200) {
             var recipes = JSON.parse(body);
-            if (recipes.hits.length) {
-                recipes = recipes.hits.map(function (element) {
-                    return {
-                        url: element.recipe.url, title: element.recipe.label, imageUrl: element.recipe.image,
-                        dietLabels: element.recipe.dietLabels, likes: 0
-                    };
-                });
-                for (let i = 0; i < recipes.length; i++) {
-                    var element = recipes[i];
-                    Recipe.find({ url: element.url, title: element.title }, function (error, result) {
-                        if (error) { return console.error(error); }
-                        if (result.length) {
-                            recipes[i].likes = result[0].likes;
-                            console.log(element.likes);
-                        }
-                    });
-                }
-                console.log(recipes);
-                res.send(recipes);
-            } else {
-                res.send([]);
-            }
-        } else if (response.statusCode == 403 || response.statusCode == 401){
+            recipes = recipes.hits.map(function (element) {
+                return {
+                    url: element.recipe.url, title: element.recipe.label, imageUrl: element.recipe.image,
+                    dietLabels: element.recipe.dietLabels, likes: 0
+                };
+            });
+            res.send(recipes);
+        } else if (response.statusCode == 403 || response.statusCode == 401) {
             res.send([]);
         }
     });
 });
+
 // add a recipe to the DB
 app.post('/recipes', function (req, res) {
     if (req.body.likes > 0) {
@@ -74,22 +60,26 @@ app.post('/recipes', function (req, res) {
         });
     }
 });
+
 // delete a recipe from DB
 app.delete('/recipes/:recipeId', function (req, res) {
-    if (req.body.likes > 1) {
-        req.body.likes--;
-        Recipe.findOneAndUpdate({ url: req.body.url, title: req.body.title }, { $set: req.body }, { new: true },
-            function (error, result) {
+    if (req.query.likes > 1) {
+        Recipe.findById(req.params.recipeId, function (error, result) {
                 if (error) { return console.error(error); }
-                res.send(result);
+                result.likes--;
+                result.save(function(err, data) {
+                    if (err) { return console.error(err); }
+                    res.send(data);
+                });
             });
     } else {
-        Recipe.findOneAndRemove({ url: req.body.url, title: req.body.title }, function (err, data) {
-            if (err) throw err;
+        Recipe.findByIdAndRemove(req.params.recipeId, function (err, data) {
+            if (err) { return console.error(err); }
             res.send(data);
         });
     }
 });
+
 // get all saved recipes from DB and send to client
 app.get('/popular', function (req, res) {
     Recipe.find(function (error, result) {
@@ -97,6 +87,7 @@ app.get('/popular', function (req, res) {
         res.send(result);
     });
 });
+
 app.listen(process.env.PORT || '8000', function () {
     console.log('you r connected to port 8000!');
 });
