@@ -284,6 +284,22 @@ select, options {
     
 }
 
+.spinner {
+    min-height: 200px;
+    padding: 50px;
+    display: none;
+}
+
+.spinner p {
+    text-align: center;
+    line-height: 2;
+    font-size: 22px;
+}
+
+.show {
+    display: block;
+}
+
 
 @media (max-width: 767px) {
     .list img {
