@@ -16,7 +16,6 @@
 </head>
 
 <body>
-    <!-- main image + input + button -->
     <header>
         <div class="container-fluid">
             <div class="row">
@@ -24,16 +23,10 @@
                     <div class="main-img">
                         <div class="main">
                             <h1>Appetize</h1>
-                        
                             <input type="text" placeholder="Search by name or ingredients" class="main-input">
-                    
-                            <!-- advanced search (by diet type) -->
-                            <!-- <button class="btn btn-type-success dropbtn">Diet Type</button> -->
-
-
+                          
                             <select class="select-btn">
                                 <option class="diet" value="0">Choose a diet type (optional)</option>
-
                                 <option class="diet" value="low-fat">Low-fat</option>
                                 <option class="diet" value="low-carb">Low-carb</option>
                                 <option class="diet" value="low-sodium">Low-sodium</option>
@@ -42,38 +35,24 @@
                                 <option class="diet" value="balanced">Balanced</option>
                             </select>
 
-<!-- start -->
-
-
-<div class=" main-btn wrapper" >
-    <span id="square" class="square">
-      <a class="tenth before after" href="#recipes">Find Recipes</a>
-    </span>
-  </div>
-
-
-  <br>
-
-<!-- end -->
-
-<div class="find-popular wrapper" >
-    <span id="square" class="square">
-      <a class="tenth before after" href="#popular">Popular Recipes</a>
-    </span>
-  </div>
-<!-- 
-                           <a class="btn btn-primary main-btn" href="#recipes">Find Recipes</a> -->
-
-                           
-                            <!-- <a  class=" btn btn-primary find-popular" href="#popular">Popular Recipes</a>-->
-
-
+                            <div class=" main-btn wrapper">
+                                <span id="square" class="square">
+                                    <a class="tenth before after" href="#recipes">Find Recipes</a>
+                                </span>
+                            </div>
+                            <br>
+                            <div class="find-popular wrapper">
+                                <span id="square" class="square">
+                                    <a class="tenth before after" href="#popular">Popular Recipes</a>
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </header>
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-10 offset-md-1 back">
@@ -89,22 +68,32 @@
         <div class="row popular-row">
             <div class="col-md-10 offset-md-1 back">
                 <section id="popular">
-                    <div class="popular-recipes">
-
-                           
-                    </div>
-                 
+                    <div class="popular-recipes"></div>
                 </section>
-              
             </div>
         </div>
     </div>
 
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-10 offset-md-1 col-sm-12 vid">
+                <h2>Recipe of the Week</h2>
+                <p>Can't choose from all our amazing recipes? Try out this week's recipe!</p>
+                <hr>
+                <div class="martha video">
+                    <iframe width="700" height="393.75" src="https://www.youtube.com/embed/OvpRev2WIVU" frameborder="0" allow="autoplay; encrypted-media"
+                        allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <script id="recipe-template" type="text/x-handlebars-template">
         <h2>Enjoy one of these amazing recipes</h2>
+        <p>bon appetit!</p>
         <hr>
         <div class="recipe-wrapper">  
-
             {{#each recipeArray}}
             <div class="recipe-container col-lg-3 col-md-4 col-sm-6 col-12">
                 <div class="list">
@@ -127,7 +116,6 @@
         <p>Try out our top-rated recipes</p>
         <hr>
         <div class="popular-wrapper">
-
             {{#each popularArray}}
             <div class="popular-container col-lg-3 col-md-4 col-sm-6 col-12" data-id="{{_id}}">
                 <div class="list">
@@ -141,7 +129,6 @@
                 </div>
             </div>
             {{/each}}
-
         </div>
     </script>
 
@@ -149,8 +136,8 @@
     async defer
     src="//assets.pinterest.com/pin/create/button" data-pin-do="buttonPin" data-pin-custom="true"></script> -->
     <script src="jquery/dist/jquery.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-    <!-- <script src="bootstrap/dist/js/bootstrap.min.js"></script> -->
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script> -->
+    <script src="bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="handlebars/dist/handlebars.js"></script>
     <script src="main.js"></script>
 </body>
