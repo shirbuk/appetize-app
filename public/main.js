@@ -169,7 +169,7 @@ $(".main-btn").on('click', function () {
     else {
         $recipeList.empty();
         app.findRecipe($input.val(), $dietType.val());
-        $('.recipe-list').toggleClass('show');
+        // $('.recipe-list').toggleClass('show');
         $input.val("");
     }
 });

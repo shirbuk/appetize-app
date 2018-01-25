@@ -56,12 +56,12 @@ p {
     margin-top: 25px;
     font-family: 'Bitter', serif;
     min-height: 1px;
-    display: none;
+    /* display: none; */
 }
 
-.show {
+/* .show {
     display: block;
-}
+} */
 
 .list {
     margin-left: 0;
