@@ -4,6 +4,7 @@ var $popularRecipes = $('.popular-recipes');
 var recipesApp = function () {
     var recipes = [];
     var savedRecipes = [];
+
     function findRecipe(text, diet) {
         var url = "";
         if (diet === "0") {
@@ -19,6 +20,12 @@ var recipesApp = function () {
                 if (data.length) {
                     console.log(data);
                     recipes = data;
+                    for (var i=0; i < recipes.length; i++) {
+                        var index = findIndexByUrlAndTitle(recipes[i], savedRecipes);
+                        if (index > -1) {
+                            recipes[i].likes = savedRecipes[index].likes;
+                        }
+                    }
                     _renderPage();
                 } else {
                     alert("Sorry we dont have a recipe match");
@@ -132,6 +139,9 @@ var recipesApp = function () {
         $(".popular-recipes").empty();
         var source = $('#popular-template').html();
         var template = Handlebars.compile(source);
+        savedRecipes = savedRecipes.sort(function(a, b) {
+            return b.likes - a.likes;
+        });
         var popularData = { "popularArray": savedRecipes };
         var newHTML = template(popularData);
         $('.popular-recipes').append(newHTML);
@@ -159,6 +169,7 @@ $(".main-btn").on('click', function () {
     else {
         $recipeList.empty();
         app.findRecipe($input.val(), $dietType.val());
+        // $('.recipe-list').toggleClass('show');
         $input.val("");
     }
 });
