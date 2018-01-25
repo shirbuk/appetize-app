@@ -330,3 +330,7 @@ select, options {
     height: auto;
     text-align: center;
     }
+
+    .footer {
+    padding-top: 15px;
+    }
